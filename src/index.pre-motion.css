@@ -698,6 +698,8 @@ p {
   min-height: 282px;
   display: grid;
   align-content: end;
+  position: relative;
+  top: -20px;
 }
 
 .device-visual > div {

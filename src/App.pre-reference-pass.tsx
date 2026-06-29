@@ -15,7 +15,6 @@ import {
 import { motion, useReducedMotion } from 'motion/react';
 import type { ReactNode } from 'react';
 import ParticleCanvas from './components/ParticleCanvas';
-import PixelBlastBackdrop from './components/PixelBlastBackdrop';
 
 const pixelPatterns = {
   scan: ['1100011', '1000001', '0011100', '0100010', '0100010', '1000001', '1100011'],
@@ -316,20 +315,6 @@ function TrustStrip() {
   );
 }
 
-function EditorialBreak() {
-  return (
-    <section className="editorial-break">
-      <Reveal className="shell editorial-lines">
-        <p>Deepfakes scale with compute.</p>
-        <p>
-          <em>Trust shouldn’t depend on guesswork.</em>
-        </p>
-        <p>Verify before identity becomes the attack surface.</p>
-      </Reveal>
-    </section>
-  );
-}
-
 function Platform() {
   const reduceMotion = useReducedMotion();
   const cardMotion = (index: number) => ({
@@ -345,13 +330,9 @@ function Platform() {
       <Reveal className="section-heading centered">
         <span className="eyebrow">
           <PixelGlyph pattern="node" />
-          01 / Detection layer
+          The Scam AI platform
         </span>
-        <h2>
-          <em className="display-serif">One trust signal.</em>
-          <br />
-          Every kind of synthetic media.
-        </h2>
+        <h2>One signal for every kind of synthetic media.</h2>
         <p>
           A unified verification layer for high-stakes identity, content, and communication—optimized from device
           to API.
@@ -413,7 +394,7 @@ function Platform() {
               <ScanFace size={62} />
               <strong>Verified locally</strong>
             </div>
-      
+   
           </div>
         </motion.article>
       </div>
@@ -427,9 +408,7 @@ function UnifiedStack() {
 
   return (
     <section className="dark-section" id="halo">
-      <PixelBlastBackdrop color="#03A9F4" pixelSize={6} speed={0.32} density={0.27} />
       <div className="shell">
-        <span className="section-code">02 / Unified stack</span>
         <Reveal className="dark-intro">
           <h2>
             Built for the whole threat.
@@ -525,7 +504,7 @@ function Solutions() {
         <div>
           <span className="eyebrow">
             <PixelGlyph pattern="scan" />
-            03 / Detection solutions
+            Detection solutions
           </span>
           <h2>Verify media wherever trust matters.</h2>
         </div>
@@ -561,8 +540,8 @@ function Solutions() {
           );
         })}
       </div>
-
-      {/* <Reveal className="industry-bar">
+{/* 
+      <Reveal className="industry-bar">
         <span>Built for your industry</span>
         <a href="https://www.scam.ai/solutions/fintech">Financial services</a>
         <a href="https://www.scam.ai/solutions/call-centers">Call centers</a>
@@ -582,7 +561,7 @@ function Developers() {
       <Reveal className="developer-copy">
         <span className="eyebrow">
           <PixelGlyph pattern="node" />
-          04 / Built for developers
+          Built for developers
         </span>
         <h2>One request. A trusted verdict.</h2>
         <p>
@@ -671,7 +650,7 @@ function Trust() {
         >
           <span className="eyebrow">
             <PixelGlyph pattern="node" />
-            05 / Transparent pricing
+            Transparent pricing
           </span>
           <h2>Use what you need. Pay for what you use.</h2>
           <p>Start with 200 free image analyses every month. Scale at $0.05 per image with no setup fee.</p>
@@ -693,7 +672,7 @@ function Trust() {
         >
           <span className="eyebrow">
             <PixelGlyph pattern="shield" />
-            06 / Global compliance
+            Global compliance
           </span>
           <h2>Deploy everywhere. Keep control of your data.</h2>
           <p>GDPR-aligned and SOC 2 Type II certified, with configurable retention for enterprise workflows.</p>
@@ -731,7 +710,7 @@ function FinalCta() {
       <Reveal className="shell">
         <span className="eyebrow">
           <PixelGlyph pattern="scan" />
-          07 / Start building trust
+          Start building trust
         </span>
         <h2>Know what’s real before it matters.</h2>
         <p>Run your first detection free, or design a deployment with an AI security engineer.</p>
@@ -790,7 +769,6 @@ export default function App() {
       <main>
         <Hero />
         <TrustStrip />
-        <EditorialBreak />
         <Platform />
         <UnifiedStack />
         <Solutions />

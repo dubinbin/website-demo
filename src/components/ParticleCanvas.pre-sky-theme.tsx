@@ -345,13 +345,13 @@ const ParticleCanvas: React.FC = () => {
     };
 
     const getRoleColor = (role: number) => {
-      if (role === ROLE_FACE) return '#03A9F4';
+      if (role === ROLE_FACE) return '#2563eb';
       if (role === ROLE_FEATURE) return '#0f172a';
-      if (role === ROLE_VOICE) return '#0288D1';
-      if (role === ROLE_SCAN) return '#38BDF8';
+      if (role === ROLE_VOICE) return '#0284c7';
+      if (role === ROLE_SCAN) return '#0ea5e9';
       if (role === ROLE_ALERT) return '#f59e0b';
-      if (role === ROLE_CONTOUR) return '#7DD3FC';
-      return '#BAE6FD';
+      if (role === ROLE_CONTOUR) return '#38bdf8';
+      return '#60a5fa';
     };
 
     const drawAmbientPass = (time: number, faceState: FaceState | null) => {
@@ -368,8 +368,8 @@ const ParticleCanvas: React.FC = () => {
           faceState.y,
           faceState.radiusX * 3,
         );
-        aura.addColorStop(0, `rgba(3, 169, 244, ${0.12 * faceState.intensity})`);
-        aura.addColorStop(0.45, `rgba(56, 189, 248, ${0.075 * faceState.intensity})`);
+        aura.addColorStop(0, `rgba(37, 99, 235, ${0.12 * faceState.intensity})`);
+        aura.addColorStop(0.45, `rgba(14, 165, 233, ${0.075 * faceState.intensity})`);
         aura.addColorStop(1, 'rgba(248, 251, 255, 0)');
         ctx.fillStyle = aura;
         ctx.fillRect(0, 0, width, height);
@@ -377,7 +377,7 @@ const ParticleCanvas: React.FC = () => {
 
       const scanY = ((time * 64) % (height + 180)) - 90;
       ctx.globalAlpha = faceState ? 0.16 : 0.2;
-      ctx.fillStyle = '#03A9F4';
+      ctx.fillStyle = '#2563eb';
       ctx.fillRect(0, scanY, width, 1);
       ctx.globalAlpha = faceState ? 0.075 : 0.105;
       ctx.fillRect(0, scanY - 18, width, 36);

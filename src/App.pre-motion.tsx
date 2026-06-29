@@ -276,10 +276,7 @@ function Platform() {
               <ScanFace size={62} />
               <strong>Verified locally</strong>
             </div>
-            <p>
-              <LockKeyhole size={14} />
-              100% on your device
-            </p>
+
           </div>
         </article>
       </div>
@@ -382,14 +379,14 @@ function Solutions() {
         })}
       </div>
 
-      <div className="industry-bar">
+      {/* <div className="industry-bar">
         <span>Built for your industry</span>
         <a href="https://www.scam.ai/solutions/fintech">Financial services</a>
         <a href="https://www.scam.ai/solutions/call-centers">Call centers</a>
         <a href="https://www.scam.ai/solutions/hr">Hiring</a>
         <a href="https://www.scam.ai/solutions/media">Media</a>
         <a href="https://www.scam.ai/solutions/kyc">KYC</a>
-      </div>
+      </div> */}
     </section>
   );
 }
