@@ -790,7 +790,7 @@ export default function App() {
       <main>
         <Hero />
         <TrustStrip />
-        <EditorialBreak />
+        {/* <EditorialBreak /> */}
         <Platform />
         <UnifiedStack />
         <Solutions />
