@@ -1,19 +1,14 @@
 import {
   ArrowRight,
   AudioLines,
-  Camera,
   Check,
   Code2,
   FileImage,
   Globe2,
   LockKeyhole,
   Menu,
-  Radio,
   ScanFace,
   ShieldCheck,
-  Smartphone,
-  Upload,
-  UserRound,
   Video,
   Zap,
 } from 'lucide-react';
@@ -321,226 +316,6 @@ function TrustStrip() {
   );
 }
 
-const demoFaces = [
-  ['AL', 'linear-gradient(145deg, #e0f7ff, #70d5fb)'],
-  ['MK', 'linear-gradient(145deg, #fff2d8, #e5a86c)'],
-  ['SO', 'linear-gradient(145deg, #e9dcff, #9f83d7)'],
-  ['JH', 'linear-gradient(145deg, #d8f4ea, #67b69b)'],
-  ['RA', 'linear-gradient(145deg, #ffe5ed, #d77b98)'],
-  ['DN', 'linear-gradient(145deg, #dceaff, #6e9dd2)'],
-  ['EV', 'linear-gradient(145deg, #eef2f5, #8e9ba6)'],
-  ['NO', 'linear-gradient(145deg, #fff0e4, #d58c63)'],
-  ['KM', 'linear-gradient(145deg, #dff7ef, #4eb19b)'],
-  ['TZ', 'linear-gradient(145deg, #e5ecff, #7289d5)'],
-  ['LI', 'linear-gradient(145deg, #ffe9f3, #dc7ca4)'],
-  ['AP', 'linear-gradient(145deg, #e9f8ff, #61b9d7)'],
-] as const;
-
-function FaceSwapDemo() {
-  const reduceMotion = useReducedMotion();
-
-  return (
-    <section className="demo-section" id="playground">
-      <div className="shell">
-        <Reveal className="demo-heading">
-          <span className="eyebrow">
-            <PixelGlyph pattern="scan" />
-            01 / Live face demo
-          </span>
-          <h2>
-            See how easy it is to <em className="display-serif">fake a face.</em>
-          </h2>
-          <p>
-            Pick a synthetic identity and preview the experience. This is a static interface demonstration—no camera
-            access or media upload required.
-          </p>
-        </Reveal>
-
-        <div className="demo-workspace">
-          <Reveal className="face-library">
-            <div className="workspace-label">
-              <span>Select an identity</span>
-              <small>StyleGAN-inspired presets</small>
-            </div>
-            <div className="face-grid">
-              {demoFaces.slice(0, 6).map(([initials, background], index) => (
-                <motion.button
-                  className={index === 0 ? 'face-tile active' : 'face-tile'}
-                  type="button"
-                  aria-label={`Select preset ${initials}`}
-                  whileHover={reduceMotion ? undefined : { y: -4, scale: 1.03 }}
-                  transition={{ duration: 0.2 }}
-                  key={initials}
-                >
-                  <span style={{ background }}>
-                    <UserRound size={24} />
-                    <b>{initials}</b>
-                  </span>
-                </motion.button>
-              ))}
-            </div>
-
-            <div className="workspace-label saved-label">
-              <span>Saved examples</span>
-              <small>Local preview only</small>
-            </div>
-            <div className="face-grid">
-              {demoFaces.slice(6).map(([initials, background]) => (
-                <motion.button
-                  className="face-tile"
-                  type="button"
-                  aria-label={`Select saved example ${initials}`}
-                  whileHover={reduceMotion ? undefined : { y: -4, scale: 1.03 }}
-                  transition={{ duration: 0.2 }}
-                  key={initials}
-                >
-                  <span style={{ background }}>
-                    <UserRound size={24} />
-                    <b>{initials}</b>
-                  </span>
-                </motion.button>
-              ))}
-              <button className="face-tile upload-tile" type="button" aria-label="Upload an example">
-                <Upload size={18} />
-                <span>Upload</span>
-              </button>
-            </div>
-
-            <p className="demo-footnote">
-              <Camera size={14} />
-              30-second interface preview · no installation
-            </p>
-          </Reveal>
-
-          <motion.div
-            className="demo-preview"
-            initial={reduceMotion ? false : { opacity: 0, x: 34 }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.82, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="preview-topbar">
-              <span>
-                <i />
-                Live face swap
-              </span>
-              <small>UI preview</small>
-            </div>
-            <div className="preview-center">
-              <span className="preview-scanner">
-                <PixelGlyph pattern="scan" label="Face scan preview" />
-              </span>
-              <span className="preview-kicker">Ready when you are</span>
-              <h3>Select a face to enter the live preview.</h3>
-              <button className="button button-primary" type="button">
-                <Camera size={17} />
-                Start interface demo
-              </button>
-            </div>
-            <div className="preview-signal" aria-hidden="true">
-              {Array.from({ length: 42 }).map((_, index) => (
-                <i key={index} style={{ height: `${18 + ((index * 19) % 68)}%` }} />
-              ))}
-            </div>
-            <div className="preview-footer">
-              <span>Camera access</span>
-              <strong>Not connected</strong>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function HaloDeviceSection() {
-  const reduceMotion = useReducedMotion();
-  const haloFeatures = [
-    { icon: Radio, title: 'Real-time', copy: 'Flags threats during the call' },
-    { icon: ShieldCheck, title: 'Secure', copy: 'Synthetic faces and swaps' },
-    { icon: LockKeyhole, title: 'Private', copy: 'No recording. No upload.' },
-  ];
-
-  return (
-    <section className="halo-device-section" id="halo-device">
-      <div className="halo-pixel-field" aria-hidden="true" />
-      <div className="shell halo-device-grid">
-        <Reveal className="halo-device-copy">
-          <div className="halo-partners">
-            <Brand />
-            <span className="partner-divider" />
-            <strong>QUALCOMM</strong>
-          </div>
-          <span className="eyebrow">
-            <PixelGlyph pattern="shield" />
-            02 / On-device protection
-          </span>
-          <h2>
-            Protection that never leaves <em className="display-serif">the device.</em>
-          </h2>
-          <p>
-            Halo identifies synthetic faces and face swaps during every call—before they become a transfer, a
-            credential reset, or a bad hiring decision.
-          </p>
-          <div className="halo-feature-grid">
-            {haloFeatures.map(({ icon: Icon, title, copy }) => (
-              <article key={title}>
-                <Icon size={19} />
-                <strong>{title}</strong>
-                <span>{copy}</span>
-              </article>
-            ))}
-          </div>
-          <div className="button-row">
-            <a className="button button-primary" href="https://www.scam.ai/halo">
-              Explore Halo <ArrowRight size={16} />
-            </a>
-            <a className="button button-ghost" href="https://www.scam.ai/halo">
-              Join the waitlist
-            </a>
-          </div>
-        </Reveal>
-
-        <motion.div
-          className="halo-call-card"
-          initial={reduceMotion ? false : { opacity: 0, y: 30, rotateY: -4 }}
-          whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, rotateY: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.86, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="call-topbar">
-            <span>
-              <i />
-              Live call
-            </span>
-            <time>12:04</time>
-          </div>
-          <div className="call-center">
-            <span className="call-ring ring-one" />
-            <span className="call-ring ring-two" />
-            <span className="call-ring ring-three" />
-            <span className="call-avatar">
-              <UserRound size={42} />
-            </span>
-            <span className="scan-beam" />
-          </div>
-          <div className="threat-alert">
-            <span>
-              <i />
-              Deepfake detected
-            </span>
-            <strong>Blocked</strong>
-          </div>
-          <div className="call-footer">
-            <Smartphone size={15} />
-            100% on-device · no recording · no upload
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
 function EditorialBreak() {
   return (
     <section className="editorial-break">
@@ -570,7 +345,7 @@ function Platform() {
       <Reveal className="section-heading centered">
         <span className="eyebrow">
           <PixelGlyph pattern="node" />
-          03 / Detection layer
+          01 / Detection layer
         </span>
         <h2>
           <em className="display-serif">One trust signal.</em>
@@ -638,10 +413,7 @@ function Platform() {
               <ScanFace size={62} />
               <strong>Verified locally</strong>
             </div>
-            <p>
-              <LockKeyhole size={14} />
-              100% on your device
-            </p>
+      
           </div>
         </motion.article>
       </div>
@@ -657,7 +429,7 @@ function UnifiedStack() {
     <section className="dark-section" id="halo">
       <PixelBlastBackdrop color="#03A9F4" pixelSize={6} speed={0.32} density={0.27} />
       <div className="shell">
-        <span className="section-code">04 / Unified stack</span>
+        <span className="section-code">02 / Unified stack</span>
         <Reveal className="dark-intro">
           <h2>
             Built for the whole threat.
@@ -753,7 +525,7 @@ function Solutions() {
         <div>
           <span className="eyebrow">
             <PixelGlyph pattern="scan" />
-            05 / Detection solutions
+            03 / Detection solutions
           </span>
           <h2>Verify media wherever trust matters.</h2>
         </div>
@@ -789,6 +561,15 @@ function Solutions() {
           );
         })}
       </div>
+
+      {/* <Reveal className="industry-bar">
+        <span>Built for your industry</span>
+        <a href="https://www.scam.ai/solutions/fintech">Financial services</a>
+        <a href="https://www.scam.ai/solutions/call-centers">Call centers</a>
+        <a href="https://www.scam.ai/solutions/hr">Hiring</a>
+        <a href="https://www.scam.ai/solutions/media">Media</a>
+        <a href="https://www.scam.ai/solutions/kyc">KYC</a>
+      </Reveal> */}
     </section>
   );
 }
@@ -801,7 +582,7 @@ function Developers() {
       <Reveal className="developer-copy">
         <span className="eyebrow">
           <PixelGlyph pattern="node" />
-          06 / Built for developers
+          04 / Built for developers
         </span>
         <h2>One request. A trusted verdict.</h2>
         <p>
@@ -890,7 +671,7 @@ function Trust() {
         >
           <span className="eyebrow">
             <PixelGlyph pattern="node" />
-            07 / Transparent pricing
+            05 / Transparent pricing
           </span>
           <h2>Use what you need. Pay for what you use.</h2>
           <p>Start with 200 free image analyses every month. Scale at $0.05 per image with no setup fee.</p>
@@ -912,7 +693,7 @@ function Trust() {
         >
           <span className="eyebrow">
             <PixelGlyph pattern="shield" />
-            08 / Global compliance
+            06 / Global compliance
           </span>
           <h2>Deploy everywhere. Keep control of your data.</h2>
           <p>GDPR-aligned and SOC 2 Type II certified, with configurable retention for enterprise workflows.</p>
@@ -950,7 +731,7 @@ function FinalCta() {
       <Reveal className="shell">
         <span className="eyebrow">
           <PixelGlyph pattern="scan" />
-          09 / Start building trust
+          07 / Start building trust
         </span>
         <h2>Know what’s real before it matters.</h2>
         <p>Run your first detection free, or design a deployment with an AI security engineer.</p>
@@ -1009,8 +790,6 @@ export default function App() {
       <main>
         <Hero />
         <TrustStrip />
-        <FaceSwapDemo />
-        <HaloDeviceSection />
         {/* <EditorialBreak /> */}
         <Platform />
         <UnifiedStack />
