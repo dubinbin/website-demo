@@ -1,0 +1,6 @@
+{
+  "name": "Dot Matrix Banner",
+  "description": "An interactive dot matrix particle animation with a blue color scheme.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
